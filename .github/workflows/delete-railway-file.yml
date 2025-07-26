@@ -1,0 +1,22 @@
+name: Delete railway.json file
+
+on:
+  workflow_dispatch:
+
+jobs:
+  delete-file:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Remove railway.json file
+        run: git rm railway.json
+
+      - name: Commit deletion
+        run: |
+          git config user.name "GitHub Action"
+          git config user.email "action@github.com"
+          git commit -m "Delete railway.json"
+          git push
+Enter file contents here
